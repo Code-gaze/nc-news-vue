@@ -13,7 +13,7 @@ const mutations ={
 const actions ={
     getArticles ({commit}) {
         getArticles()
-        .then(articles=>commit('GET_ARTICLES', articles))
+        .then(({articles})=>commit('GET_ARTICLES', articles.articles))
         .catch(error=>error)
     }
 };

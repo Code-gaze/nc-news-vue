@@ -5,14 +5,16 @@
            <button> <h3>Title: {{article.title}} </h3></button>
         </router-link>
       </div>
-      <div class={article}>
-        <span class={tag}><router-link to={`/topics/${topic}`} ><Button size="small" color="primary">Topic: {topic} </Button></router-link></span>
-        <span class={tag}><router-link to={`/users/${author}`} ><Button size="small" color="primary">Author:  {author}</Button></router-link></span>
+      <div class='article'>
+        <span class='tag'><router-link :to="'/topics/' + article.topic"><Button 
+        >Topic: {{article.topic}} </Button></router-link></span>
+        <span class='tag'><router-link :to="'/users/' + article.author"><Button 
+        >Author:  {{article.author}}</Button></router-link></span>
       </div>
-      <div class={article}>
-        <span class={tag}>Votes: {votes} </span>
-        <span class={tag}>Comments: {comment_count} </span>
-        <span class={tag}>Date:  {created_at.split("T")[0]}</span></div>
+      <div class='article'>
+        <span class='tag'>Votes: {{article.votes}} </span>
+        <span class='tag'>Comments: {{article.comment_count}} </span>
+        <span class='tag'>Date:  {{article.created_at.split("T")[0]}}</span></div>
     </div>
 </template>
 
