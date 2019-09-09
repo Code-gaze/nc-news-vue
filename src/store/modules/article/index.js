@@ -13,7 +13,7 @@ const mutations ={
 const actions ={
     getArticle ({commit}, id) {
         getArticle(id)
-        .then((article=>commit('GET_ARTICLE', article))
+        .then(article=>commit('GET_ARTICLE', article))
         .catch(error=>error)
     }
 };
@@ -22,7 +22,7 @@ const getters = {
     article:state=>state.article,
 };
 
-const articlesModule = {
+const articleModule = {
     // namespaced: true,
     state,
     mutations,
@@ -30,4 +30,4 @@ const articlesModule = {
     getters
 }
 
-export default articlesModule;
+export default articleModule;
