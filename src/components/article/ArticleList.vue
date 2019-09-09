@@ -13,10 +13,12 @@ export default {
     components: {
         ArticleItem,
     },
+    props:['topic'],
     computed:{
-        ...mapGetters([
-            'articles'
-        ])
+        articles(){
+          return this.$store.getters.articles
+          .filter(article=>this.topic===undefined?true:(article.topic === this.topic))
+        }
     },
     created(){
         this.$store.dispatch('getArticles');
