@@ -14,7 +14,8 @@ const mutations ={
 
 const actions ={
     getTopics ({commit}) {
-        getTopics.then(topics=>commit('GET_TOPICS', topics))
+        getTopics()
+        .then(topics=>commit('GET_TOPICS', topics))
     }
 };
 

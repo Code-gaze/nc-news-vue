@@ -5,12 +5,22 @@
         {error && <p>error: {error}</p>}
         {topics && topics.map(topic => <Link to={`/topics/${topic.slug}`} key={topic.slug} className="title-link">{topic.slug}</Link>
         )} -->
-        in navigation
+        in navigation, {{topics[0].slug}}
       </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
-    name:'Navigation'
+    name:'Navigation',
+    computed: {
+        ...mapGetters([
+            'topics'
+        ]),
+    },
+    created(){
+        this.$store.dispatch('getTopics');
+    }
 }
 </script>
