@@ -1,6 +1,7 @@
 <template>
   <div id="app">
    <Header />
+   <div className="nav" ><Navigation /></div>
    <Footer />
   </div>
 </template>
@@ -8,12 +9,14 @@
 <script>
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Navigation from './components/Navigation';
 
 export default {
   name: 'app',
   components: {
     Header,
     Footer,
+    Navigation,
   }
 }
 </script>
