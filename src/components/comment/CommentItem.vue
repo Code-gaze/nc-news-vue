@@ -10,8 +10,7 @@
       </div>
       <div class='right'>
         <div class="vote">
-            <!-- <Vote votes={votes} id={comment_id} handleVote={updateComment} /> -->
-            votes: {{comment.votes}}
+            <Vote :votes='comment.votes' :id='comment.comment_id' v-on:updateVote='onUpdateVote'/>
         </div>
         <!-- <div class="vote">
           {children}
@@ -21,8 +20,20 @@
 </template>
 
 <script>
+import Vote from '../button/Vote';
+
 export default {
     name:'CommentItem',
+    components:{
+        Vote,
+    },
+    methods:{
+      onUpdateVote(change){
+          this.comment.votes+=change; //optimistic response
+          //dispatch can only take one additional argument!!!
+          this.$store.dispatch('updateComment', {id:this.comment.comment_id, change})
+      }
+    },
     props:['comment']
 }
 </script>
