@@ -2,6 +2,9 @@
   <div id="app">
    <Header />
    <div className="nav" ><Navigation /></div>
+   <div className="body">
+      <router-view></router-view>
+    </div>
    <Footer />
   </div>
 </template>
@@ -10,6 +13,7 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
+import ArticleList from './components/article/ArticleList'
 
 export default {
   name: 'app',
@@ -17,6 +21,7 @@ export default {
     Header,
     Footer,
     Navigation,
+    ArticleList,
   }
 }
 </script>

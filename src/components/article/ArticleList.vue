@@ -1,9 +1,16 @@
 <template>
-    <p>this the article list page</p>
+    <div >
+        <ArticleItem v-for='article in articles' :key='article.article_id' />
+    </div>
 </template>
 
 <script>
+import ArticleItem from './ArticleItem';
+
 export default {
-    name: 'ArticleList'
+    name: 'ArticleList',
+    components: {
+        ArticleItem,
+    }
 }
 </script>

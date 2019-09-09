@@ -12,10 +12,10 @@ const router = new VueRouter({
             path: '/',
             component: ArticleList
         },
-        // {
-        //     path: '/',
-        //     component: ArticleList
-        // },
+        {
+            path: '/topics/:topic',
+            component: ArticleList
+        },
         // {
         //     path: '/',
         //     component: ArticleList
