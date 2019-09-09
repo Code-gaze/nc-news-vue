@@ -1,28 +1,95 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+    text-align: center;
+  max-width: 800px;
+  margin:auto;
+}
+.body{
+  font-size: 0.9rem;
+}
+h4{
+  color: rgb(52, 9, 95);
+  margin: 1em 0.5em 0.6em;
+  font-family:  Arial,  sans-serif;
+}
+h3{
+  color: rgb(52, 9, 95);
+  margin: 0.9em 0.5em 0.3em;
+  font-family:  Arial,  sans-serif;
+}
+.title-link{
+  background-color: rgb(160, 160, 160);
+  padding: 0.3em 0.5em 0.3em;
+  margin: 0.2em 0.2em;
+  border-radius: 0.6em;
+  color: rgb(255, 255, 255);
+}
+label{
+  margin: 0em 0.8em 1.5em;
+}
+.nav{
+  margin: 0.6em 0em ;
+}
+p{
+  margin: 0.5em 0em;
+}
+label{
+  color: rgb(3, 10, 75);
+  font-weight: bold;
+}
+header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#logo{
+  width: 60px;
+  height: 60px;
+  margin-left: 0.6em
+}
+.vote{
+  margin:0em 0.6em;
+}
+.vote-block{
+ display: flex;
+ flex-flow: row wrap;
+ text-align: center;
+ justify-content: center;
+ margin:0em 0.3em;
+}
+.deletebutton{
+  margin-bottom: 0.2em;
+  margin-right: 0.5em;
+  margin-left: 0em;
+}
+.article-sort-order{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.sort{
+  font-size:0.9rem;
+  margin-left: 1em;
+}
+.toggle-button{
+  margin:0.2em 1.5em;
+  margin-left: auto;
 }
 </style>
