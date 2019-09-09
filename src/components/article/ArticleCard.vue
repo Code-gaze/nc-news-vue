@@ -1,10 +1,10 @@
 <template>
-    <div class='article' >
+    <div class='article' v-if='Object.keys(article).length !== 0'>
    <div class='left'>
     <span class='tag'><router-link :to="'/topics/'+article.topic">topic: {{article.topic}} </router-link></span>
     <span class='tag'><router-link :to="'/users/' + article.author">
      Author: {{article.author}}</router-link></span>
-    <span class='tag'>Date: {{article.created_at.split("T")[0]}}</span>
+    <span class='tag'>Date: {{date}}</span>
     <span class='tag'>Comments: {{article.comment_count}}</span>
    </div>
    <div class='mid'>
@@ -12,16 +12,24 @@
     <p>Text: {{article.body}}</p>
    </div>
    <div class='right'>
-    <!-- <Vote votes={votes} id={article_id} handleVote={updateArticle} /> -->
-    <p>votes: {{article.votes}}</p>
+    <Vote :votes='article.votes' :id='article.article_id' />
    </div>
   </div>
 </template>
 
 <script>
+import Vote from '../button/Vote'
 export default {
     name: 'ArticleCard',
     props: ['article'],
+    components:{
+        Vote,
+    },
+    computed:{
+        date(){
+          return this.article.created_at.split("T")[0]
+        }
+    }
 }
 </script>
 

@@ -1,0 +1,27 @@
+<template>
+    <div class="vote-block">
+        <div class="vote">
+          <button :disabled='vote > 0' @click="$emit('updateVote', 1)"> + vote! </button>
+        </div>
+        <p>Votes: {{votes + vote}}</p>
+        <div class="vote">
+          <button :disabled='vote < 0' @click="$emit('updateVote', -1)"> - vote! </button>
+        </div>
+      </div>
+</template>
+
+<script>
+export default {
+    name: 'Vote',
+    props: ['votes', 'id'],
+    data(){
+        return {
+            vote:0,
+        }
+    },
+}
+</script>
+
+<style scoped>
+
+</style>

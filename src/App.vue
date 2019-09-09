@@ -76,7 +76,7 @@ header{
   margin-left: 0.6em
 }
 .vote{
-  margin:0em 0.6em;
+  margin:0.3em 0.6em;
 }
 .vote-block{
  display: flex;
