@@ -12,7 +12,7 @@
     <p>Text: {{article.body}}</p>
    </div>
    <div class='right'>
-    <Vote :votes='article.votes' :id='article.article_id' />
+    <Vote :votes='article.votes' :id='article.article_id' v-on:updateVote='onUpdateVote'/>
    </div>
   </div>
 </template>
@@ -24,6 +24,13 @@ export default {
     props: ['article'],
     components:{
         Vote,
+    },
+    methods:{
+      onUpdateVote(change){
+          this.article.votes+=change; //optimistic response
+          //dispatch can only take one additional argument!!!
+          this.$store.dispatch('updateArticle', {id:this.article.article_id, change})
+      }
     },
     computed:{
         date(){
