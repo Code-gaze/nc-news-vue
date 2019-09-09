@@ -1,11 +1,10 @@
 <template>
     <nav >
-        <!-- <Link to={`/`} className="title-link">Home</Link>
-        {loading && <Loader type="ThreeDots" color="#somecolor" height={80} width={80} />}
-        {error && <p>error: {error}</p>}
-        {topics && topics.map(topic => <Link to={`/topics/${topic.slug}`} key={topic.slug} className="title-link">{topic.slug}</Link>
-        )} -->
-        in navigation, {{topics[0].slug}}
+        <router-link to='/' class="title-link">Home</router-link>
+            <p v-if='loading'>...loading</p>
+            <router-link v-for='topic in topics' :key='topic.slug' :to="'/' + topic.slug" class="title-link">
+                {{topic.slug}}
+            </router-link>
       </nav>
 </template>
 
@@ -16,7 +15,9 @@ export default {
     name:'Navigation',
     computed: {
         ...mapGetters([
-            'topics'
+            'topics',
+            'loading',
+            'error'
         ]),
     },
     created(){
