@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import topics from './modules/topics';
 import articles from './modules/articles';
 import article from './modules/article';
+import comments from './modules/comments';
 
 
 Vue.use(Vuex);
@@ -12,5 +13,6 @@ export default new Vuex.Store({
     topics,
     articles,
     article,
+    comments,
   }
 });
