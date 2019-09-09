@@ -1,17 +1,21 @@
 <template>
-    <div className={Style.article} >
-      <div className={Style.left}>
-        <span className={Style.tag}><Link to={`/users/${author}`} >Author:  {author}</Link></span>
-        <span className={Style.tag}>Date: {created_at.split("T")[0]}</span>
+    <div class='article' >
+      <div class='left'>
+        <span class='tag'><router-link to="'/user/'+comment.author">
+        Author:  {{comment.author}}</router-link></span>
+        <span class='tag'>Date: {{comment.created_at.split("T")[0]}}</span>
       </div>
-      <div className={Style.mid}>
-        <p>Comment: {body}</p>
+      <div class='mid'>
+        <p>Comment: {{comment.body}}</p>
       </div>
-      <div className={Style.right}>
-        <div className="vote"><Vote votes={votes} id={comment_id} handleVote={updateComment} /></div>
-        <div className="vote">
-          {children}
+      <div class='right'>
+        <div class="vote">
+            <!-- <Vote votes={votes} id={comment_id} handleVote={updateComment} /> -->
+            votes: {{comment.votes}}
         </div>
+        <!-- <div class="vote">
+          {children}
+        </div> -->
       </div>
     </div>
 </template>
