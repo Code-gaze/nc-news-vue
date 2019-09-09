@@ -2,7 +2,6 @@
     <div>
         <h3>Article and Its Comments </h3>
         <ArticleCard :article='article'/>
-        in article page {{id}}
     </div>
 </template>
 

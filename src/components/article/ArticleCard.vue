@@ -1,26 +1,27 @@
 <template>
     <div class='article' >
-   <!-- <div className={Style.left}>
-    <span className={Style.tag}><Link to={`/topics/${topic}`} >topic: {topic} </Link></span>
-    <span className={Style.tag}><Link to={`/users/${author}`} >
-     Author: {author}</Link></span>
-    <span className={Style.tag}>Date: {created_at.split("T")[0]}</span>
-    <span className={Style.tag}>Comments: {comment_count}</span>
+   <div class='left'>
+    <span class='tag'><router-link :to="'/topics/'+article.topic">topic: {{article.topic}} </router-link></span>
+    <span class='tag'><router-link :to="'/users/' + article.author">
+     Author: {{article.author}}</router-link></span>
+    <span class='tag'>Date: {{article.created_at.split("T")[0]}}</span>
+    <span class='tag'>Comments: {{article.comment_count}}</span>
    </div>
-   <div className={Style.mid}>
-    <p><strong>Title: {title}</strong></p>
-    <p>Text: {body}</p>
+   <div class='mid'>
+    <p><strong>Title: {{article.title}}</strong></p>
+    <p>Text: {{article.body}}</p>
    </div>
-   <div className={Style.right}>
-    <Vote votes={votes} id={article_id} handleVote={updateArticle} />
-   </div> -->
-   in article card
+   <div class='right'>
+    <!-- <Vote votes={votes} id={article_id} handleVote={updateArticle} /> -->
+    <p>votes: {{article.votes}}</p>
+   </div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'ArticleCard'
+    name: 'ArticleCard',
+    props: ['article'],
 }
 </script>
 
