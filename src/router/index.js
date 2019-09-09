@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import ArticleList from '../components/article/ArticleList';
-import ErrorMsg from '../components/ErrorMsg.vue'
+import ErrorMsg from '../components/ErrorMsg.vue';
+import ArticlePage from '../components/article/ArticlePage';
 
 Vue.use(VueRouter);
 
@@ -16,10 +17,11 @@ const router = new VueRouter({
             path: '/topics/:topic',
             component: ArticleList
         },
-        // {
-        //     path: '/',
-        //     component: ArticleList
-        // },
+        {
+            path: '/articles/:id',
+            component: ArticlePage,
+            props:true,
+        },
         // {
         //     path: '/',
         //     component: ArticleList
