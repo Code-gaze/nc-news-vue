@@ -1,7 +1,9 @@
 <template>
     <div>
         <UserItem :username='author.username' :name='author.name' :avatar_url='author.avatar_url'/>
-        <ArticleList :author='user' />
+        <ToggleButton :left="'Articles'" :right="'Comments'" @orderClicked='handleEvent' />
+        <ArticleList :author='user' v-if='showList === "Articles"'/>
+        <CommentList :id='user' v-if='showList === "Comments"'/>
     </div>
 </template>
 
@@ -10,12 +12,21 @@ import UserItem from './UserItem';
 import { mapGetters } from 'vuex';
 import {getUser}  from '../api';
 import ArticleList from '../article/ArticleList';
+import CommentList from '../comment/CommentList';
+import ToggleButton from '../button/ToggleButton';
 
 export default {
     name: 'UserPage',
+    data(){
+        return {
+            showList:'Articles'
+        }
+    },
     components:{
        UserItem,
+       ToggleButton,
        ArticleList,
+       CommentList,
     },
     props:{
         user:{type: String}
@@ -32,7 +43,12 @@ export default {
     },
     created(){
          this.$store.dispatch('getAuthor', this.user)
-    }
+    },
+    methods:{
+        handleEvent({value}){
+            this.showList= value
+        }
+        }
 }
 </script>
 
