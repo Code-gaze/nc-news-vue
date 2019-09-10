@@ -46,7 +46,8 @@ export default {
     },
     methods:{
         callStore(){
-            this.$store.dispatch('getComments', { id:this.id, sort_by:this.sort_by, order:this.order})
+            this.$store.dispatch('getComments', 
+            { id:this.id, sort_by:this.sort_by, order:this.order, belongTo:this.belongTo})
         },
         handleEvent({name, value}){
             name ==='sort_by'
@@ -54,7 +55,7 @@ export default {
              :this[name]= value
         }
     },
-    props:['id'],
+    props:['id','belongTo'],
     created(){
         this.callStore()
     }

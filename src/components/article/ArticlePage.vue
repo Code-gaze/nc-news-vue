@@ -4,7 +4,7 @@
         <ArticleCard :article='article'/>
         <hr />
         <AddComment :id='id'/>
-        <CommentList :id='id' />
+        <CommentList :id='id' belongTo='article'/>
     </div>
 </template>
 

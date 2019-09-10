@@ -1,4 +1,5 @@
-import {getCommentsByArticle, updateComment, addComment, deleteComment} from '../../../components/api';
+import {getCommentsByArticle, updateComment, addComment, 
+       deleteComment, getCommentsByUser} from '../../../components/api';
 
 const state = {
     comments: [],
@@ -21,10 +22,14 @@ const mutations ={
 };
 
 const actions ={
-    getComments ({commit}, {id, sort_by, order}) {
-        getCommentsByArticle(id, sort_by, order)
-        .then(comments=>commit('GET_COMMENTS', comments))
-        .catch(error=>error)
+    getComments ({commit}, {id, sort_by, order, belongTo}) {
+        belongTo === 'article'
+        ?getCommentsByArticle(id, sort_by, order)
+         .then(comments=>commit('GET_COMMENTS', comments))
+         .catch(error=>error)
+        :getCommentsByUser(id, sort_by, order)
+         .then(comments=>commit('GET_COMMENTS', comments))
+         .catch(error=>error)
     },
     updateComment({commit}, {id, change}){
         updateComment(id, { inc_votes: change })
