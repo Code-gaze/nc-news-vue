@@ -14,7 +14,8 @@ export default {
         ArticleItem,
     },
     props:{
-        topic:{type:String}
+        topic:{type:String},
+        author:{type:String}
     },
     computed:{
         ...mapGetters([
@@ -23,11 +24,14 @@ export default {
     },
     watch:{
         topic(){
-            this.$store.dispatch('getArticles', this.topic);
+            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
+        },
+        author(){
+            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
         }
     },
     created(){
-        this.$store.dispatch('getArticles', this.topic);
+        this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
     }
 }
 </script>
