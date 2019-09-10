@@ -1,13 +1,13 @@
 <template>
   <div class='outline'>
     <h4>Post a comment to this article with current author</h4>
-    <form onSubmit={this.onHandleSubmit} >
+    <form @submit.prevent='onSubmit' >
      <div class='form'>
       <div class='body'>
-       <input label='comment' value={text} onChange={this.handleChange} margin='none' fullWidth />
+       <input placeholder='new comment' v-model='newComment'/>
       </div>
       <div class='submit'>
-       <button type="submit" variant="contained" size="small" color="primary" disabled={!text}> Submit </button>
+       <button type="submit" :disabled='newComment.length===0'> Submit </button>
       </div>
      </div>
     </form>
@@ -15,8 +15,26 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
     name: 'AddComment',
+    props: ['id'],
+    computed:{
+        ...mapGetters([
+            'user'
+        ])
+    },
+    data(){
+        return {
+            newComment:'',
+        }
+    },
+    methods:{
+        onSubmit(e){
+            this.$store.dispatch('addComment', {id:this.id, newComment:this.newComment, user:this.user});
+            this.newComment='';
+        }
+    }
 }
 </script>
 

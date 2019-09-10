@@ -3,7 +3,7 @@
         <h3>Article and Its Comments </h3>
         <ArticleCard :article='article'/>
         <hr />
-        <AddComment />
+        <AddComment :id='id'/>
         <CommentList :id='id' />
     </div>
 </template>
