@@ -12,8 +12,8 @@ const mutations ={
 
 const actions ={
     getArticles ({commit}, {topic, author, sort_by, order, limit, p}) {
-        getArticles(topic,author, sort_by, order, limit, p)
-        .then(({articles})=>commit('GET_ARTICLES', articles.articles))
+        getArticles(topic, author, sort_by, order, limit, +p)
+        .then(articles=>commit('GET_ARTICLES', articles.articles))
         .catch(error=>error)
     }
 };

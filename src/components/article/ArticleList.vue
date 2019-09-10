@@ -1,17 +1,26 @@
 <template>
     <div >
-        <ArticleItem v-for='article in articles' :key='article.article_id' v-bind='article'/>
+        <ArticleItem v-for='article in articles.articles' :key='article.article_id' v-bind='article'/>
+        <Page :pageTotal='pageTotal' :p='p' @pageClicked='changePage'/>
     </div>
 </template>
 
 <script>
 import ArticleItem from './ArticleItem';
 import { mapGetters } from 'vuex';
+import Page from '../button/Page';
 
 export default {
     name: 'ArticleList',
     components: {
         ArticleItem,
+        Page,
+    },
+    data(){
+        return {
+            limit:6,
+            p:1,
+        }
     },
     props:{
         topic:{type:String},
@@ -20,18 +29,33 @@ export default {
     computed:{
         ...mapGetters([
             'articles'
-        ])
+        ]),
+        pageTotal(){
+            return Math.ceil(this.articles.total_count / this.limit)
+        }
     },
     watch:{
         topic(){
-            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
+            this.callStore();
         },
         author(){
-            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
+            this.callStore();
+        },
+        p(){
+            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author,limit:this.limit, p:this.p})
         }
     },
     created(){
-        this.$store.dispatch('getArticles', {topic:this.topic, author: this.author});
+        this.callStore()
+    },
+    methods:{
+        callStore(){
+           this.p = 1;
+           this.$store.dispatch('getArticles', {topic:this.topic, author: this.author,limit:this.limit, p:this.p})
+        },
+        changePage(page){
+           this.p = page;
+        }
     }
 }
 </script>
