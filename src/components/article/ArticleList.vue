@@ -6,7 +6,6 @@
           @sortChange='handleEvent' />
         <ToggleButton :left="'desc'" :right="'asc'" @orderClicked='handleEvent' />
         </div>
-        
         <ArticleItem v-for='article in articles.articles' :key='article.article_id' v-bind='article'/>
         <Page :pageTotal='pageTotal' :p='p' @pageClicked='handleEvent'/>
         <LimitSelect :limit='limit' @limitChange='handleEvent' />

@@ -1,24 +1,60 @@
 <template>
-    <div><CommentItem v-for='comment in comments' :key='comment.comment_id' :comment='comment'/></div>
+    <div>
+        <div class="article-sort-order">
+          <SortSelect :sortValue='ARTICLE_SORT_CHART[sort_by]' 
+          :options='["date", "votes", "author"]'
+          @sortChange='handleEvent' />
+        <ToggleButton :left="'desc'" :right="'asc'" @orderClicked='handleEvent' />
+        </div>
+        <CommentItem v-for='comment in comments' :key='comment.comment_id' :comment='comment'/>
+    </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import CommentItem from './CommentItem';
+import SortSelect from '../button/SortSelect';
+import ToggleButton from '../button/ToggleButton';
+import {ARTICLE_SORT_CHART} from '../constant'
 
 export default {
     name: 'CommentList',
     components:{
         CommentItem,
+        SortSelect,
+        ToggleButton
+    },
+    data(){
+        return {
+            sort_by: 'created_at',
+            order: 'desc',
+            ARTICLE_SORT_CHART,
+        }
     },
     computed:{
         ...mapGetters([
             'comments'
         ])
     },
+    watch:{
+        sort_by(){
+            this.callStore()
+        },
+        order(){
+            this.callStore()
+        },
+    },
+    methods:{
+        callStore(){
+            this.$store.dispatch('getComments', { id:this.id, sort_by:this.sort_by, order:this.order})
+        },
+        handleEvent({name, value}){
+            this[name]= value
+        }
+    },
     props:['id'],
     created(){
-        this.$store.dispatch('getComments', this.id)
+        this.callStore()
     }
 }
 </script>

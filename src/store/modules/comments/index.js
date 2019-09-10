@@ -21,8 +21,8 @@ const mutations ={
 };
 
 const actions ={
-    getComments ({commit}, id) {
-        getCommentsByArticle(id)
+    getComments ({commit}, {id, sort_by, order}) {
+        getCommentsByArticle(id, sort_by, order)
         .then(comments=>commit('GET_COMMENTS', comments))
         .catch(error=>error)
     },
