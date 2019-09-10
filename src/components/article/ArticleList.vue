@@ -13,15 +13,21 @@ export default {
     components: {
         ArticleItem,
     },
-    props:['topic'],
+    props:{
+        topic:{type:String}
+    },
     computed:{
-        articles(){
-          return this.$store.getters.articles
-          .filter(article=>this.topic===undefined?true:(article.topic === this.topic))
+        ...mapGetters([
+            'articles'
+        ])
+    },
+    watch:{
+        topic(){
+            this.$store.dispatch('getArticles', this.topic);
         }
     },
     created(){
-        this.$store.dispatch('getArticles');
+        this.$store.dispatch('getArticles', this.topic);
     }
 }
 </script>
