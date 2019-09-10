@@ -1,7 +1,7 @@
 <template>
     <div class="toggle-button">
-        <button :disabled='!onLeft' @click="$emit('orderClicked', left)"> {{left}} </button>
-        <button :disabled='!onLeft' @click="$emit('orderClicked', right)"> {{right}}</button>
+        <button :disabled='on' @click="$emit('orderClicked', {value: left, name:'order'}), on=!on"> {{left}} </button>
+        <button :disabled='!on' @click="$emit('orderClicked', {value:right, name:'order'}), on=!on"> {{right}}</button>
       </div>
 </template>
 
@@ -10,7 +10,7 @@ export default {
     name: 'ToggleButton',
     data(){
         return {
-            onLeft:true,
+            on:true,
         }
     },
     props:['left', 'right']

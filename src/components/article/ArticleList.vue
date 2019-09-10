@@ -3,13 +3,13 @@
         <div class="article-sort-order">
           <SortSelect :sortValue='ARTICLE_SORT_CHART[sort_by]' 
           :options='["date", "votes", "author", "comments"]'
-          @sortChange='handleChange' />
-        <ToggleButton :left="'desc'" :right="'asc'" @orderClicked='handleClick' />
+          @sortChange='handleEvent' />
+        <ToggleButton :left="'desc'" :right="'asc'" @orderClicked='handleEvent' />
         </div>
         
         <ArticleItem v-for='article in articles.articles' :key='article.article_id' v-bind='article'/>
-        <Page :pageTotal='pageTotal' :p='p' @pageClicked='handleClick'/>
-        <LimitSelect :limit='limit' @limitChange='handleChange' />
+        <Page :pageTotal='pageTotal' :p='p' @pageClicked='handleEvent'/>
+        <LimitSelect :limit='limit' @limitChange='handleEvent' />
     </div>
 </template>
 
@@ -82,15 +82,8 @@ export default {
            this.$store.dispatch('getArticles', 
            {topic:this.topic, author: this.author,sort_by:this.sort_by,order:this.order,limit:this.limit, p:this.p})
         },
-        handleClick(value){
-           isNaN(value)
-            ? this.order=value
-            : this.p=value
-        },
-        handleChange(value){
-            isNaN(value)
-             ?this.sort_by= ARTICLE_SORT_CHART[value]
-             :this.limit= value
+        handleEvent({name, value}){
+            this[name]= value
         }
         }
     

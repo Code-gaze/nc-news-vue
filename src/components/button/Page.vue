@@ -1,6 +1,7 @@
 <template>
     <div class="page-number">
-   <button v-for='num in list' :key='num' :disabled='num===p' @click="$emit('pageClicked', num)"> {{num}}</Button>
+   <button v-for='num in list' :key='num' :disabled='num===p' 
+     @click="$emit('pageClicked', {value:num, name:'p'})"> {{num}}</Button>
   </div>
 </template>
 
