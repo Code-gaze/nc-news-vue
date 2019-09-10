@@ -1,4 +1,4 @@
-import {getCommentsByArticle, updateComment, addComment} from '../../../components/api';
+import {getCommentsByArticle, updateComment, addComment, deleteComment} from '../../../components/api';
 
 const state = {
     comments: [],
@@ -15,6 +15,9 @@ const mutations ={
     ADD_COMMENT (state, payload){
         state.comments = [payload, ...state.comments]
     },
+    DELETE_COMMENT (state, payload) {
+        state.comments= state.comments.filter(comment=>comment.comment_id !== payload)
+    }
 };
 
 const actions ={
@@ -32,6 +35,11 @@ const actions ={
           .then(comment=>commit('ADD_COMMENT', comment))
           .catch(error=>error)
      },
+     deleteComment({commit}, id){
+         deleteComment(id)
+         .then(()=>commit('DELETE_COMMENT', id))
+         .catch(error=>error)
+     }
 };
 
 const getters = {

@@ -13,7 +13,7 @@
             <Vote :votes='comment.votes' :id='comment.comment_id' v-on:updateVote='onUpdateVote'/>
         </div>
         <div class="vote">
-          <DeleteComment :author='comment.author'/>
+          <DeleteComment :author='comment.author' :id='comment.comment_id'/>
         </div>
       </div>
     </div>
