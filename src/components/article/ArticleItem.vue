@@ -1,27 +1,27 @@
 <template>
     <div class='item'>
       <div class='article'>
-        <router-link :to="'/articles/' + article.article_id">
-           <button> <h3>Title: {{article.title}} </h3></button>
+        <router-link :to="'/articles/' + article_id">
+           <button> <h3>Title: {{title}} </h3></button>
         </router-link>
       </div>
       <div class='article'>
-        <span class='tag'><router-link :to="'/topics/' + article.topic"><Button 
-        >Topic: {{article.topic}} </Button></router-link></span>
-        <span class='tag'><router-link :to="'/users/' + article.author"><Button 
-        >Author:  {{article.author}}</Button></router-link></span>
+        <span class='tag'><router-link :to="'/topics/' + topic"><Button 
+        >Topic: {{topic}} </Button></router-link></span>
+        <span class='tag'><router-link :to="'/users/' + author"><Button 
+        >Author:  {{author}}</Button></router-link></span>
       </div>
       <div class='article'>
-        <span class='tag'>Votes: {{article.votes}} </span>
-        <span class='tag'>Comments: {{article.comment_count}} </span>
-        <span class='tag'>Date:  {{article.created_at.split("T")[0]}}</span></div>
+        <span class='tag'>Votes: {{votes}} </span>
+        <span class='tag'>Comments: {{comment_count}} </span>
+        <span class='tag'>Date:  {{created_at.split("T")[0]}}</span></div>
     </div>
 </template>
 
 <script>
 export default {
     name:'ArticleItem',
-    props: ['article']
+    props: ['article_id', 'topic', 'author', 'votes', 'comment_count', 'created_at', 'title']
 }
 </script>
 
