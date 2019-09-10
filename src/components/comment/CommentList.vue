@@ -6,7 +6,10 @@
           @sortChange='handleEvent' />
         <ToggleButton :left="'desc'" :right="'asc'" @orderClicked='handleEvent' />
         </div>
-        <CommentItem v-for='comment in comments' :key='comment.comment_id' :comment='comment'/>
+        <CommentItem v-for='comment in comments' :key='comment.comment_id' :comment='comment'>
+            <span class='tag' v-if='showArticle'><router-link :to="'/articles/'+comment.article_id">
+                Article</router-link></span>
+        </CommentItem>
     </div>
 </template>
 
@@ -55,7 +58,7 @@ export default {
              :this[name]= value
         }
     },
-    props:['id','belongTo'],
+    props:['id','belongTo', 'showArticle'],
     created(){
         this.callStore()
     }

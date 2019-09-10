@@ -3,7 +3,7 @@
         <UserItem :username='author.username' :name='author.name' :avatar_url='author.avatar_url'/>
         <ToggleButton :left="'Articles'" :right="'Comments'" @orderClicked='handleEvent' />
         <ArticleList :author='user' v-if='showList === "Articles"'/>
-        <CommentList :id='user' v-if='showList === "Comments"'/>
+        <CommentList :id='user' v-if='showList === "Comments"' :showArticle='showArticle'/>
     </div>
 </template>
 
@@ -19,7 +19,8 @@ export default {
     name: 'UserPage',
     data(){
         return {
-            showList:'Articles'
+            showList:'Articles',
+            showArticle: true,
         }
     },
     components:{
