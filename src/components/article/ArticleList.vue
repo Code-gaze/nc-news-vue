@@ -1,7 +1,7 @@
 <template>
     <div >
         <ArticleItem v-for='article in articles.articles' :key='article.article_id' v-bind='article'/>
-        <Page :pageTotal='pageTotal' :p='p' @pageClicked='changePage'/>
+        <Page :pageTotal='pageTotal' :p='p' @pageClicked='handleClick'/>
     </div>
 </template>
 
@@ -53,9 +53,12 @@ export default {
            this.p = 1;
            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author,limit:this.limit, p:this.p})
         },
-        changePage(page){
-           this.p = page;
+        handleClick(value){
+           isNaN(value)
+            ? this.order=value
+            : this.p=value
+           }
         }
-    }
+    
 }
 </script>
