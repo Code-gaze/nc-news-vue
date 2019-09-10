@@ -1,11 +1,11 @@
 <template>
     <div class="vote-block">
         <div class="vote">
-          <button :disabled='vote > 0' @click="$emit('updateVote', 1)"> + vote! </button>
+          <button :disabled='vote > 0' @click="$emit('updateVote', 1), vote++"> + vote! </button>
         </div>
-        <p>Votes: {{votes + vote}}</p>
+        <p>Votes: {{votes}}</p>
         <div class="vote">
-          <button :disabled='vote < 0' @click="$emit('updateVote', -1)"> - vote! </button>
+          <button :disabled='vote < 0' @click="$emit('updateVote', -1), vote--"> - vote! </button>
         </div>
       </div>
 </template>
