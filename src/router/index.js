@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import ArticleList from '../components/article/ArticleList';
 import ErrorMsg from '../components/ErrorMsg.vue';
 import ArticlePage from '../components/article/ArticlePage';
+import UserPage from '../components/user/UserPage';
 
 Vue.use(VueRouter);
 
@@ -23,10 +24,11 @@ const router = new VueRouter({
             component: ArticlePage,
             props:true,
         },
-        // {
-        //     path: '/',
-        //     component: ArticleList
-        // },
+        {
+            path: '/users/:user',
+            component: UserPage,
+            props:true,
+        },
         {
             path: '*',
             component: ErrorMsg
