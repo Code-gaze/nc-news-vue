@@ -1,8 +1,11 @@
 <template>
   <div id="app">
    <Header />
-   <div className="nav" ><Navigation /></div>
-   <div className="body">
+   <label>Current Author:</label>
+  <UserSelect />
+  <router-link :to='"/users/"+user' class="title-link">User</router-link>
+   <div class="nav" ><Navigation /></div>
+   <div class="body">
       <router-view></router-view>
     </div>
    <Footer />
@@ -14,6 +17,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
 import ArticleList from './components/article/ArticleList';
+import UserSelect from './components/user/UserSelect';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
@@ -22,6 +27,12 @@ export default {
     Footer,
     Navigation,
     ArticleList,
+    UserSelect,
+  },
+  computed:{
+    ...mapGetters([
+      'user'
+    ])
   }
 }
 </script>
