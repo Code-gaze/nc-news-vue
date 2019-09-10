@@ -25,7 +25,7 @@ const actions ={
     },
     updateComment({commit}, {id, change}){
         updateComment(id, { inc_votes: change })
-         .catch(error=>commit('UPDATE_COMMENT', {id, change}))
+         .catch(error=>commit('UPDATE_COMMENT', {id, change, error}))
      },
      addComment({commit}, {id, newComment, user}){
         addComment(id, {username:user, body:newComment})

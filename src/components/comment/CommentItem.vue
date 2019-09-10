@@ -12,20 +12,22 @@
         <div class="vote">
             <Vote :votes='comment.votes' :id='comment.comment_id' v-on:updateVote='onUpdateVote'/>
         </div>
-        <!-- <div class="vote">
-          {children}
-        </div> -->
+        <div class="vote">
+          <DeleteComment :author='comment.author'/>
+        </div>
       </div>
     </div>
 </template>
 
 <script>
 import Vote from '../button/Vote';
+import DeleteComment from './DeleteComment'
 
 export default {
     name:'CommentItem',
     components:{
         Vote,
+        DeleteComment,
     },
     methods:{
       onUpdateVote(change){
