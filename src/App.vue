@@ -13,7 +13,7 @@
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Navigation from './components/Navigation';
-import ArticleList from './components/article/ArticleList'
+import ArticleList from './components/article/ArticleList';
 
 export default {
   name: 'app',

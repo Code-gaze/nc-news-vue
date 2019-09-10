@@ -4,6 +4,7 @@ import topics from './modules/topics';
 import articles from './modules/articles';
 import article from './modules/article';
 import comments from './modules/comments';
+import user from './modules/user';
 
 
 Vue.use(Vuex);
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     articles,
     article,
     comments,
+    user,
   }
 });
