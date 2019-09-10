@@ -49,7 +49,9 @@ export default {
             this.$store.dispatch('getComments', { id:this.id, sort_by:this.sort_by, order:this.order})
         },
         handleEvent({name, value}){
-            this[name]= value
+            name ==='sort_by'
+             ?this.sort_by= ARTICLE_SORT_CHART[value]
+             :this[name]= value
         }
     },
     props:['id'],

@@ -82,7 +82,9 @@ export default {
            {topic:this.topic, author: this.author,sort_by:this.sort_by,order:this.order,limit:this.limit, p:this.p})
         },
         handleEvent({name, value}){
-            this[name]= value
+            name ==='sort_by'
+             ?this.sort_by= ARTICLE_SORT_CHART[value]
+             :this[name]= value
         }
         }
     
