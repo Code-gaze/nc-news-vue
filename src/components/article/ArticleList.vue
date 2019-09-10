@@ -1,5 +1,8 @@
 <template>
     <div >
+        <SortSelect :sortValue='ARTICLE_SORT_CHART[sort_by]' 
+          :options='["date", "votes", "author", "comments"]'
+          @sortChange='handleChange' />
         <ArticleItem v-for='article in articles.articles' :key='article.article_id' v-bind='article'/>
         <Page :pageTotal='pageTotal' :p='p' @pageClicked='handleClick'/>
         <LimitSelect :limit='limit' @limitChange='handleChange' />
@@ -10,7 +13,9 @@
 import ArticleItem from './ArticleItem';
 import { mapGetters } from 'vuex';
 import Page from '../button/Page';
-import LimitSelect from '../button/LimitSelect'
+import LimitSelect from '../button/LimitSelect';
+import SortSelect from '../button/SortSelect';
+import {ARTICLE_SORT_CHART} from '../constant'
 
 export default {
     name: 'ArticleList',
@@ -18,11 +23,14 @@ export default {
         ArticleItem,
         Page,
         LimitSelect,
+        SortSelect,
     },
     data(){
         return {
             limit:6,
             p:1,
+            sort_by: 'created_at',
+            ARTICLE_SORT_CHART,
         }
     },
     props:{
@@ -47,8 +55,12 @@ export default {
         limit(){
             this.callStore()
         },
+        sort_by(){
+            this.callStore()
+        },
         p(){
-            this.$store.dispatch('getArticles', {topic:this.topic, author: this.author,limit:this.limit, p:this.p})
+            this.$store.dispatch('getArticles', 
+            {topic:this.topic, author: this.author, sort_by:this.sort_by, limit:this.limit, p:this.p})
         }
     },
     created(){
@@ -57,7 +69,8 @@ export default {
     methods:{
         callStore(){
            this.p = 1;
-           this.$store.dispatch('getArticles', {topic:this.topic, author: this.author,limit:this.limit, p:this.p})
+           this.$store.dispatch('getArticles', 
+           {topic:this.topic, author: this.author,sort_by:this.sort_by,limit:this.limit, p:this.p})
         },
         handleClick(value){
            isNaN(value)
