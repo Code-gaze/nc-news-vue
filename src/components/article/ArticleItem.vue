@@ -2,14 +2,13 @@
     <div class='item'>
       <div class='article'>
         <router-link :to="'/articles/' + article_id">
-           <button> <h3>Title: {{title}} </h3></button>
+            <h3>Title: {{title}} </h3>
         </router-link>
       </div>
       <div class='article'>
-        <span class='tag'><router-link :to="'/topics/' + topic"><Button 
-        >Topic: {{topic}} </Button></router-link></span>
-        <span class='tag'><router-link :to="'/users/' + author"><Button 
-        >Author:  {{author}}</Button></router-link></span>
+        <span class='tag'><router-link :to="'/topics/' + topic">
+        Topic: {{topic}} </router-link></span>
+        <span class='tag'><router-link :to="'/users/' + author">Author:  {{author}}</router-link></span>
       </div>
       <div class='article'>
         <span class='tag'>Votes: {{votes}} </span>
