@@ -1,7 +1,7 @@
 <template>
     <div class="sort">
    <label>Show how many articles per page:</label>
-   <select :value='limit' @change="$emit('limitChange')">
+   <select :value='limit' @change="$emit('limitChange', $event.target.value)">
      <option v-for='num in list' :value='num' :key='num'>{{num}}</option>
    </select>
   </div>
