@@ -3,6 +3,7 @@
         <h3>Article and Its Comments </h3>
         <ArticleCard :article='article'/>
         <hr />
+        <AddComment />
         <CommentList :id='id' />
     </div>
 </template>
@@ -11,6 +12,7 @@
 import ArticleCard from './ArticleCard';
 import { mapGetters } from 'vuex';
 import CommentList from '../comment/CommentList';
+import AddComment from '../comment/AddComment'
 
 export default {
     name: 'ArticlePage',
@@ -23,6 +25,7 @@ export default {
     components: {
         ArticleCard,
         CommentList,
+        AddComment,
     },
     created(){
         this.$store.dispatch('getArticle', this.id)
