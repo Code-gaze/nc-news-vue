@@ -1,5 +1,7 @@
 # A Vue Northcoders-News Client with Vuex and Vue Router
 
+This App web is hosted on [click here](https://nc-news-vue.netlify.com/).
+
 Northcoders News is a social news aggregation, web content rating, and discussion website. Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments (comment can only be deleted by its author, so please select the correct current user to delete a comment) which they have added.
 
 ## Features
