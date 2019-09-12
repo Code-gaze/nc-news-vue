@@ -3,7 +3,7 @@
     <div class="article-sort-order">
       <SortSelect
         :sortValue="ARTICLE_SORT_CHART[sort_by]"
-        :options='["date", "votes", "author", "comments"]'
+        :options="['date', 'votes', 'author', 'comments']"
         @sortChange="handleEvent"
       />
       <ToggleButton :left="'desc'" :right="'asc'" @orderClicked="handleEvent" />
@@ -68,29 +68,22 @@ export default {
       this.callStore();
     },
     p() {
-      this.$store.dispatch("getArticles", {
-        topic: this.topic,
-        author: this.author,
-        sort_by: this.sort_by,
-        order: this.order,
-        limit: this.limit,
-        p: this.p
-      });
+      this.callStore(this.p);
     }
   },
   created() {
     this.callStore();
   },
   methods: {
-    callStore() {
-      this.p = 1;
+    callStore(p = 1) {
+      this.p = p;
       this.$store.dispatch("getArticles", {
         topic: this.topic,
         author: this.author,
         sort_by: this.sort_by,
         order: this.order,
         limit: this.limit,
-        p: this.p
+        p
       });
     },
     handleEvent({ name, value }) {
