@@ -3,15 +3,17 @@
     <div class="article-sort-order">
       <SortSelect
         :sortValue="ARTICLE_SORT_CHART[sort_by]"
-        :options='["date", "votes", "author"]'
+        :options="['date', 'votes', 'author']"
         @sortChange="handleEvent"
       />
       <ToggleButton :left="'desc'" :right="'asc'" @orderClicked="handleEvent" />
     </div>
     <CommentItem v-for="comment in comments" :key="comment.comment_id" :comment="comment">
-      <span class="tag" v-if="showArticle">
-        <router-link :to="'/articles/'+comment.article_id">Article</router-link>
-      </span>
+      <router-link :to="'/articles/'+comment.article_id" v-if="belongTo==='Author'">Article</router-link>
+      <router-link
+        :to="'/users/'+comment.author"
+        v-if="belongTo==='Article'"
+      >Author: {{comment.author}}</router-link>
     </CommentItem>
   </div>
 </template>

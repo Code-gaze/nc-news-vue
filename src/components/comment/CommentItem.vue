@@ -2,9 +2,8 @@
   <div class="article">
     <div class="left">
       <span class="tag">
-        <router-link :to="'/users/'+comment.author">Author: {{comment.author}}</router-link>
+        <slot></slot>
       </span>
-      <slot></slot>
       <span class="tag">Date: {{comment.created_at.split("T")[0]}}</span>
     </div>
     <div class="mid">
