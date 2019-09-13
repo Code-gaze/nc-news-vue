@@ -6,6 +6,11 @@ import {
   getCommentsByUser
 } from "../../../components/api";
 
+const getComments = {
+  Article: getCommentsByArticle,
+  Author: getCommentsByUser
+};
+
 const state = {
   comments: []
 };
@@ -32,13 +37,9 @@ const mutations = {
 
 const actions = {
   getComments({ commit }, { id, sort_by, order, belongTo }) {
-    belongTo === "article"
-      ? getCommentsByArticle(id, sort_by, order)
-          .then(comments => commit("GET_COMMENTS", comments))
-          .catch(error => error)
-      : getCommentsByUser(id, sort_by, order)
-          .then(comments => commit("GET_COMMENTS", comments))
-          .catch(error => error);
+    getComments[belongTo](id, sort_by, order)
+      .then(comments => commit("GET_COMMENTS", comments))
+      .catch(error => error);
   },
   updateComment({ commit }, { id, change }) {
     updateComment(id, {

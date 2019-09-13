@@ -3,7 +3,12 @@
     <UserItem :username="author.username" :name="author.name" :avatar_url="author.avatar_url" />
     <ToggleButton :left="'Articles'" :right="'Comments'" @orderClicked="handleEvent" />
     <ArticleList :author="user" v-if="showList === 'Articles'" />
-    <CommentList :id="user" v-if="showList === 'Comments'" :showArticle="showArticle" />
+    <CommentList
+      :id="user"
+      v-if="showList === 'Comments'"
+      :showArticle="showArticle"
+      belongTo="Author"
+    />
   </div>
 </template>
 
