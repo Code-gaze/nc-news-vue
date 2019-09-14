@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-spinner variant="primary" label="Text Centered" v-if="loading"></b-spinner>
     <div class="article-sort-order">
       <SortSelect
         :sortValue="ARTICLE_SORT_CHART[sort_by]"
@@ -34,6 +35,8 @@ export default {
   },
   data() {
     return {
+      loading: false,
+      error: "",
       limit: 6,
       p: 1,
       sort_by: "created_at",

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Article and Its Comments</h3>
+    <h4>Article and Its Comments</h4>
     <ArticleCard :article="article" />
     <hr />
     <AddComment :id="id" />

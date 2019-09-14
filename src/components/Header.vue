@@ -1,7 +1,6 @@
 <template>
   <header>
-   <img src="../assets/034-microphone.svg" alt="title" className="logo" id="logo" />  
-    <h1>Nc News <span role="img" aria-label="say no evil">🙊️</span></h1>
+    <h2>Nc News <span role="img" aria-label="say no evil">🙊️</span></h2>
   </header>
 </template>
 

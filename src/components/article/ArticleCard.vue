@@ -2,7 +2,7 @@
   <div class="article" v-if="Object.keys(article).length !== 0">
     <div class="left">
       <span class="tag">
-        <router-link :to="'/topics/'+article.topic">topic: {{article.topic}}</router-link>
+        <router-link :to="'/topics/'+article.topic">Topic: {{article.topic}}</router-link>
       </span>
       <span class="tag">
         <router-link :to="'/users/' + article.author">Author: {{article.author}}</router-link>
