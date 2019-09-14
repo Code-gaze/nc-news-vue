@@ -1,6 +1,8 @@
 <template>
   <div>
-    <b-spinner variant="primary" label="Text Centered" v-if="loading"></b-spinner>
+    <b-button variant="primary" disabled v-if="loading">
+      <b-spinner small type="grow"></b-spinner>Loading...
+    </b-button>
     <div class="article-sort-order">
       <SortSelect
         :sortValue="ARTICLE_SORT_CHART[sort_by]"
@@ -79,15 +81,22 @@ export default {
   },
   methods: {
     callStore(p = 1) {
+      this.loading = true;
       this.p = p;
-      this.$store.dispatch("getArticles", {
-        topic: this.topic,
-        author: this.author,
-        sort_by: this.sort_by,
-        order: this.order,
-        limit: this.limit,
-        p
-      });
+      this.$store
+        .dispatch("getArticles", {
+          topic: this.topic,
+          author: this.author,
+          sort_by: this.sort_by,
+          order: this.order,
+          limit: this.limit,
+          p
+        })
+        .then(res => (this.loading = false))
+        .catch(error => {
+          this.loading = false;
+          this.error = error;
+        });
     },
     handleEvent({ name, value }) {
       name === "sort_by"
