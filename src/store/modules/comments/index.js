@@ -19,12 +19,6 @@ const mutations = {
   GET_COMMENTS(state, payload) {
     state.comments = payload;
   },
-  UPDATE_COMMENT(state, payload) {
-    const comment = state.comments.find(
-      comment => comment.commment_id === payload.id
-    );
-    comment.votes -= payload.change;
-  },
   ADD_COMMENT(state, payload) {
     state.comments = [payload, ...state.comments];
   },
@@ -41,16 +35,10 @@ const actions = {
       .then(comments => commit("GET_COMMENTS", comments))
       .catch(error => error);
   },
-  updateComment({ commit }, { id, change }) {
-    updateComment(id, {
+  updateComment(context, { id, change }) {
+    return updateComment(id, {
       inc_votes: change
-    }).catch(error =>
-      commit("UPDATE_COMMENT", {
-        id,
-        change,
-        error
-      })
-    );
+    });
   },
   addComment({ commit }, { id, newComment, user }) {
     addComment(id, {

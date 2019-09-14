@@ -34,10 +34,14 @@ export default {
     onUpdateVote(change) {
       this.article.votes += change; //optimistic response
       //dispatch can only take one additional argument!!!
-      this.$store.dispatch("updateArticle", {
-        id: this.article.article_id,
-        change
-      });
+      this.$store
+        .dispatch("updateArticle", {
+          id: this.article.article_id,
+          change
+        })
+        .catch(error => {
+          this.article.votes -= change;
+        });
     }
   },
   computed: {

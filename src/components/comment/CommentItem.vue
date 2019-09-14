@@ -37,6 +37,9 @@ export default {
       this.$store.dispatch("updateComment", {
         id: this.comment.comment_id,
         change
+      })
+      .catch(error=>{
+        this.comment.votes -= change;
       });
     }
   },
